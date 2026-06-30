@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Logo } from "@/components/Logo";
 import { PRODUCTS } from "@/lib/products";
 import { LayoutDashboard, Package, ShoppingBag, Users, Settings, LogOut, TrendingUp, DollarSign, Eye, Plus, Trash2, Pencil } from "lucide-react";
