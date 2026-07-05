@@ -204,3 +204,57 @@ function SettingsPanel() {
     </div>
   );
 }
+
+function Banners() {
+  const { banners, intervalSec, save, saveInterval } = useBanners();
+  const [draft, setDraft] = useState<Banner>({ id: "", image: "", title: "", subtitle: "", cta: "Shop Now", href: "/shop" });
+
+  const add = () => {
+    if (!draft.image) return;
+    save([...banners, { ...draft, id: crypto.randomUUID() }]);
+    setDraft({ id: "", image: "", title: "", subtitle: "", cta: "Shop Now", href: "/shop" });
+  };
+  const remove = (id: string) => save(banners.filter((b) => b.id !== id));
+
+  return (
+    <div>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl">Home Banners</h1>
+        <div className="flex items-center gap-3">
+          <label className="text-xs tracking-widest uppercase text-muted-foreground">Rotate every</label>
+          <input type="number" min={2} value={intervalSec} onChange={(e) => saveInterval(Math.max(2, Number(e.target.value) || 5))} className="w-20 bg-background border border-border px-3 py-2 text-sm" />
+          <span className="text-xs text-muted-foreground">seconds</span>
+        </div>
+      </div>
+
+      <div className="mt-8 grid md:grid-cols-2 gap-5">
+        {banners.map((b) => (
+          <div key={b.id} className="bg-card border border-border overflow-hidden">
+            <img src={b.image} alt={b.title} className="w-full h-40 object-cover" />
+            <div className="p-4 flex items-start justify-between gap-4">
+              <div className="text-sm">
+                <p className="font-medium whitespace-pre-line">{b.title}</p>
+                <p className="text-xs text-muted-foreground mt-1">{b.subtitle}</p>
+              </div>
+              <button onClick={() => remove(b.id)} className="p-2 hover:text-destructive"><Trash2 className="w-4 h-4" /></button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-10 bg-card border border-border p-6 max-w-2xl">
+        <h3 className="text-lg mb-4 flex items-center gap-2"><Plus className="w-4 h-4" />Add banner</h3>
+        <div className="space-y-3 text-sm">
+          <div><label className="text-xs tracking-widest uppercase">Image URL</label><input value={draft.image} onChange={(e) => setDraft({ ...draft, image: e.target.value })} placeholder="https://…" className="mt-1 w-full bg-background border border-border px-3 py-2" /></div>
+          <div><label className="text-xs tracking-widest uppercase">Title</label><input value={draft.title} onChange={(e) => setDraft({ ...draft, title: e.target.value })} className="mt-1 w-full bg-background border border-border px-3 py-2" /></div>
+          <div><label className="text-xs tracking-widest uppercase">Subtitle</label><input value={draft.subtitle} onChange={(e) => setDraft({ ...draft, subtitle: e.target.value })} className="mt-1 w-full bg-background border border-border px-3 py-2" /></div>
+          <div className="grid grid-cols-2 gap-3">
+            <div><label className="text-xs tracking-widest uppercase">CTA label</label><input value={draft.cta} onChange={(e) => setDraft({ ...draft, cta: e.target.value })} className="mt-1 w-full bg-background border border-border px-3 py-2" /></div>
+            <div><label className="text-xs tracking-widest uppercase">CTA link</label><input value={draft.href} onChange={(e) => setDraft({ ...draft, href: e.target.value })} className="mt-1 w-full bg-background border border-border px-3 py-2" /></div>
+          </div>
+          <button onClick={add} className="bg-primary text-primary-foreground px-6 py-2.5 text-xs tracking-widest uppercase">Add Banner</button>
+        </div>
+      </div>
+    </div>
+  );
+}
