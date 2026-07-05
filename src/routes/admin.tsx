@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Logo } from "@/components/Logo";
 import { PRODUCTS } from "@/lib/products";
-import { LayoutDashboard, Package, ShoppingBag, Users, Settings, LogOut, TrendingUp, DollarSign, Eye, Plus, Trash2, Pencil } from "lucide-react";
+import { useBanners, type Banner } from "@/lib/banners";
+import { LayoutDashboard, Package, ShoppingBag, Users, Settings, LogOut, TrendingUp, DollarSign, Eye, Plus, Trash2, Pencil, Image as ImageIcon } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/admin")({
@@ -12,6 +13,7 @@ export const Route = createFileRoute("/admin")({
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "products", label: "Products", icon: Package },
+  { id: "banners", label: "Banners", icon: ImageIcon },
   { id: "orders", label: "Orders", icon: ShoppingBag },
   { id: "customers", label: "Customers", icon: Users },
   { id: "settings", label: "Settings", icon: Settings },
