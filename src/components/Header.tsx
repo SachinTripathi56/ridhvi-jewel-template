@@ -33,6 +33,7 @@ export function Header({ transparentOnTop = false }: { transparentOnTop?: boolea
   const logoRest = solid ? "text-neutral-900" : "text-white";
 
   return (
+    <>
     <header className={`fixed top-0 inset-x-0 z-40 transition-colors duration-300 ${barClass}`}>
       <div className="hidden md:grid grid-cols-3 items-center px-10 py-5 max-w-[1600px] mx-auto">
         <Link to="/" className="wordmark text-2xl tracking-[0.28em]">
