@@ -1,64 +1,85 @@
 import { Link } from "@tanstack/react-router";
-import { Search, User, Heart, ShoppingBag, Menu, X } from "lucide-react";
-import { useState } from "react";
-import { Logo } from "./Logo";
+import { Search, User, Heart, ShoppingBag, Menu, X, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useCart } from "@/lib/cart";
 
 const nav = [
   { to: "/", label: "Home" },
   { to: "/shop", label: "Shop" },
-  { to: "/shop", label: "Collections" },
+  { to: "/shop", label: "Blog" },
+  { to: "/shop", label: "Pages" },
   { to: "/admin", label: "Admin" },
+  { to: "/shop", label: "Contacts" },
 ];
 
-export function Header() {
+export function Header({ transparentOnTop = false }: { transparentOnTop?: boolean }) {
   const { count } = useCart();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!transparentOnTop) { setScrolled(true); return; }
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [transparentOnTop]);
+
+  const solid = scrolled;
+  const barClass = solid
+    ? "bg-white text-neutral-900 shadow-[0_1px_0_rgba(0,0,0,0.06)]"
+    : "bg-transparent text-white";
+  const logoR = solid ? "text-[#8B1F2B]" : "text-white";
+  const logoRest = solid ? "text-neutral-900" : "text-white";
 
   return (
-    <header className="sticky top-0 z-40 bg-background/85 backdrop-blur border-b border-border">
-      <div className="hidden md:flex items-center justify-between px-8 py-4 max-w-[1400px] mx-auto">
-        <div className="flex-1 flex items-center gap-8 text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
-          <span>283 N. Glenwood Street, Levittown</span>
-          <span>+1 712-339-9294</span>
-        </div>
-        <Logo />
-        <div className="flex-1 flex items-center justify-end gap-5">
-          <button aria-label="Search" className="hover:text-accent transition"><Search className="w-4 h-4" /></button>
-          <Link to="/admin" aria-label="Account" className="hover:text-accent transition"><User className="w-4 h-4" /></Link>
-          <button aria-label="Wishlist" className="hover:text-accent transition"><Heart className="w-4 h-4" /></button>
-          <Link to="/cart" aria-label="Cart" className="relative hover:text-accent transition">
-            <ShoppingBag className="w-4 h-4" />
+    <>
+    <header className={`fixed top-0 inset-x-0 z-40 transition-colors duration-300 ${barClass}`}>
+      <div className="hidden md:grid grid-cols-3 items-center px-10 py-5 max-w-[1600px] mx-auto">
+        <Link to="/" className="wordmark text-2xl tracking-[0.28em]">
+          <span className={logoR}>R</span><span className={logoRest}>IDHVI</span>
+        </Link>
+
+        <nav className="flex items-center justify-center gap-9 text-[13px] tracking-wide">
+          {nav.map((n) => (
+            <Link key={n.label} to={n.to} className="inline-flex items-center gap-1 hover:opacity-70 transition">
+              {n.label}
+              {["Shop","Blog","Pages"].includes(n.label) && <ChevronDown className="w-3 h-3 opacity-70" />}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center justify-end gap-6">
+          <button aria-label="Search" className="hover:opacity-70"><Search className="w-[18px] h-[18px]" /></button>
+          <Link to="/admin" aria-label="Account" className="hover:opacity-70"><User className="w-[18px] h-[18px]" /></Link>
+          <button aria-label="Wishlist" className="hover:opacity-70"><Heart className="w-[18px] h-[18px]" /></button>
+          <Link to="/cart" aria-label="Cart" className="relative hover:opacity-70">
+            <ShoppingBag className="w-[18px] h-[18px]" />
             {count > 0 && (
-              <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-[10px] w-4 h-4 rounded-full flex items-center justify-center">{count}</span>
+              <span className="absolute -top-2 -right-2 bg-[#8B1F2B] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">{count}</span>
             )}
           </Link>
         </div>
       </div>
 
-      <nav className="hidden md:flex items-center justify-center gap-10 py-3 border-t border-border/60 text-[12px] tracking-[0.22em] uppercase">
-        {nav.map((n) => (
-          <Link key={n.label} to={n.to} className="hover:text-accent transition">{n.label}</Link>
-        ))}
-        <Link to="/shop" className="hover:text-accent transition">Contact</Link>
-      </nav>
-
       {/* mobile */}
-      <div className="md:hidden flex items-center justify-between px-4 py-3">
+      <div className="md:hidden flex items-center justify-between px-5 py-4">
         <button aria-label="Menu" onClick={() => setOpen(true)}><Menu className="w-5 h-5" /></button>
-        <Logo />
+        <Link to="/" className="wordmark text-lg tracking-[0.28em]">
+          <span className={logoR}>R</span><span className={logoRest}>IDHVI</span>
+        </Link>
         <Link to="/cart" className="relative" aria-label="Cart">
           <ShoppingBag className="w-5 h-5" />
           {count > 0 && (
-            <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-[10px] w-4 h-4 rounded-full flex items-center justify-center">{count}</span>
+            <span className="absolute -top-2 -right-2 bg-[#8B1F2B] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">{count}</span>
           )}
         </Link>
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-background md:hidden">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-            <Logo />
+        <div className="fixed inset-0 z-50 bg-white text-neutral-900 md:hidden">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-200">
+            <span className="wordmark text-lg tracking-[0.28em]"><span className="text-[#8B1F2B]">R</span><span>IDHVI</span></span>
             <button aria-label="Close" onClick={() => setOpen(false)}><X className="w-5 h-5" /></button>
           </div>
           <div className="flex flex-col p-6 gap-5 text-lg tracking-widest uppercase">
@@ -69,5 +90,7 @@ export function Header() {
         </div>
       )}
     </header>
+    {!transparentOnTop && <div aria-hidden className="h-[84px] md:h-[84px]" />}
+    </>
   );
 }

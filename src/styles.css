@@ -43,7 +43,7 @@
   --radius: 0.25rem;
 
   /* Light premium palette for silver jewellery */
-  --background: oklch(0.985 0.008 80);          /* ivory */
+  --background: #FAF8F5;                          /* soft ivory */
   --foreground: oklch(0.22 0.012 50);            /* warm charcoal */
 
   --card: oklch(1 0 0);

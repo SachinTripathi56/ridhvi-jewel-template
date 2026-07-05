@@ -7,7 +7,7 @@ export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   return (
     <div className="group">
-      <div className="relative aspect-square bg-secondary overflow-hidden">
+      <div className="relative aspect-[4/5] bg-secondary overflow-hidden rounded-3xl">
         <Link to="/product/$slug" params={{ slug: product.slug }}>
           <img
             src={product.image}
