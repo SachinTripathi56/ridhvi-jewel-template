@@ -40,6 +40,7 @@ function AdminPage() {
       <main className="flex-1 p-10 overflow-auto">
         {tab === "dashboard" && <Dashboard />}
         {tab === "products" && <Products />}
+        {tab === "banners" && <Banners />}
         {tab === "orders" && <Orders />}
         {tab === "customers" && <Customers />}
         {tab === "settings" && <SettingsPanel />}
