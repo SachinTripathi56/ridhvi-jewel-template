@@ -89,5 +89,7 @@ export function Header({ transparentOnTop = false }: { transparentOnTop?: boolea
         </div>
       )}
     </header>
+    {!transparentOnTop && <div aria-hidden className="h-[84px] md:h-[84px]" />}
+    </>
   );
 }
