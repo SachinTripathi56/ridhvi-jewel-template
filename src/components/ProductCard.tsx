@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Heart, Eye } from "lucide-react";
 import type { Product } from "@/lib/products";
 import { useCart } from "@/lib/cart";
+import { price } from "@/lib/format";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
