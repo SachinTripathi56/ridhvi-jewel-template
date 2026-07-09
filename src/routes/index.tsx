@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PRODUCTS, CATEGORIES } from "@/lib/products";
 import { useBanners } from "@/lib/banners";
+import { useStory } from "@/lib/story";
 import { useEffect, useState } from "react";
 import { Truck, ShieldCheck, MessageCircle, Award, ChevronLeft, ChevronRight } from "lucide-react";
 
