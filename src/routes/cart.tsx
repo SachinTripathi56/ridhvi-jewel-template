@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useCart } from "@/lib/cart";
+import { price } from "@/lib/format";
 import { Minus, Plus, X } from "lucide-react";
 
 export const Route = createFileRoute("/cart")({
