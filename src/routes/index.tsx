@@ -120,9 +120,9 @@ function Home() {
       {/* Tabbed product showcase */}
       <section className="max-w-[1400px] mx-auto px-6 mt-24">
         <SectionTitle subtitle="Curated by our atelier.">Our Edit</SectionTitle>
-        <div className="flex justify-center gap-10 mb-10 text-[11px] tracking-[0.3em] uppercase">
+        <div className="flex justify-center gap-10 mb-10 text-[14px] tracking-[0.3em] uppercase">
           {(["new", "featured", "sale"] as const).map((k) => (
-            <button key={k} onClick={() => setTab(k)} className={`pb-2 border-b ${tab === k ? "border-accent text-foreground" : "border-transparent text-muted-foreground"}`}>
+            <button key={k} onClick={() => setTab(k)} className={`pb-2 border-b-2 ${tab === k ? "border-accent text-foreground" : "border-transparent text-muted-foreground"}`}>
               {k === "new" ? "New Arrived" : k === "featured" ? "Featured" : "On Sale"}
             </button>
           ))}
