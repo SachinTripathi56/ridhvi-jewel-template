@@ -8,6 +8,7 @@ export type Banner = {
   subtitle?: string;
   cta?: string;
   href?: string;
+  showText?: boolean;
 };
 
 const KEY = "ridhvi.banners";
