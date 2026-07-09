@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useCart } from "@/lib/cart";
+import { price } from "@/lib/format";
 import { useState } from "react";
 
 export const Route = createFileRoute("/checkout")({
@@ -13,7 +14,7 @@ function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
   const [shipping, setShipping] = useState<"flat" | "free">("flat");
   const [pay, setPay] = useState<"bank" | "cod">("bank");
-  const ship = shipping === "flat" ? 30 : 0;
+  const ship = shipping === "flat" ? 250 : 0;
   const total = subtotal + ship;
 
   const onPlace = (e: React.FormEvent) => {
