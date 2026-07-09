@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PRODUCTS, CATEGORIES } from "@/lib/products";
 import { useBanners } from "@/lib/banners";
+import { useStory } from "@/lib/story";
 import { useEffect, useState } from "react";
 import { Truck, ShieldCheck, MessageCircle, Award, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const [tab, setTab] = useState<"new" | "featured" | "sale">("new");
+  const { story } = useStory();
   const tabbed = PRODUCTS.filter((p) =>
     tab === "new" ? p.badge === "NEW" : tab === "featured" ? p.badge === "FEATURED" : !!p.oldPrice
   ).slice(0, 4);
@@ -57,16 +59,16 @@ function Home() {
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-[1600px] w-full mx-auto px-10 grid md:grid-cols-2 gap-10 items-center">
             <div />
-            {active && (
+            {active && (active.showText ?? true) && (
               <div className="bg-[#c9a48a]/90 backdrop-blur-sm text-white px-12 py-16 max-w-xl ml-auto">
-                <h1 className="font-display text-5xl md:text-6xl leading-[1.05] whitespace-pre-line">
+                <h1 className="font-display text-6xl md:text-7xl leading-[1.05] whitespace-pre-line">
                   {active.title}
                 </h1>
                 {active.subtitle && (
-                  <p className="mt-6 text-[11px] tracking-[0.32em]">{active.subtitle}</p>
+                  <p className="mt-6 text-[13px] tracking-[0.32em]">{active.subtitle}</p>
                 )}
                 {active.cta && (
-                  <Link to={active.href ?? "/shop"} className="mt-8 inline-block bg-black text-white px-10 py-4 text-[11px] tracking-[0.3em] uppercase hover:opacity-90">
+                  <Link to={active.href ?? "/shop"} className="mt-8 inline-block bg-black text-white px-10 py-4 text-[12px] tracking-[0.3em] uppercase hover:opacity-90">
                     {active.cta}
                   </Link>
                 )}
@@ -118,9 +120,9 @@ function Home() {
       {/* Tabbed product showcase */}
       <section className="max-w-[1400px] mx-auto px-6 mt-24">
         <SectionTitle subtitle="Curated by our atelier.">Our Edit</SectionTitle>
-        <div className="flex justify-center gap-10 mb-10 text-[11px] tracking-[0.3em] uppercase">
+        <div className="flex justify-center gap-10 mb-10 text-[14px] tracking-[0.3em] uppercase">
           {(["new", "featured", "sale"] as const).map((k) => (
-            <button key={k} onClick={() => setTab(k)} className={`pb-2 border-b ${tab === k ? "border-accent text-foreground" : "border-transparent text-muted-foreground"}`}>
+            <button key={k} onClick={() => setTab(k)} className={`pb-2 border-b-2 ${tab === k ? "border-accent text-foreground" : "border-transparent text-muted-foreground"}`}>
               {k === "new" ? "New Arrived" : k === "featured" ? "Featured" : "On Sale"}
             </button>
           ))}
@@ -133,22 +135,22 @@ function Home() {
       {/* About brand — image banner (3/4 screen) with fused text */}
       <section className="relative w-full mt-24" style={{ height: "75vh" }}>
         <img
-          src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1800&q=80"
+          src={story.image}
           alt="Ridhvi atelier"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-[1400px] mx-auto w-full px-10 md:px-16 text-white">
-            <p className="text-[11px] tracking-[0.35em] uppercase text-white/80">About Ridhvi</p>
-            <h2 className="mt-4 font-display text-5xl md:text-7xl leading-[1.05] max-w-2xl">
-              Made by hand,<br />meant to last.
+            <p className="text-[13px] tracking-[0.35em] uppercase text-white/85">{story.eyebrow}</p>
+            <h2 className="mt-4 font-display text-6xl md:text-8xl leading-[1.02] max-w-3xl whitespace-pre-line">
+              {story.title}
             </h2>
-            <p className="mt-6 max-w-lg text-white/85 leading-relaxed">
-              Every piece is cast, finished and polished by our small team. Solid sterling silver, ethically-sourced stones — worn and re-worn for a lifetime.
+            <p className="mt-8 max-w-xl text-lg text-white/90 leading-relaxed">
+              {story.body}
             </p>
-            <Link to="/shop" className="inline-block mt-8 border border-white px-10 py-3.5 text-[11px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition">
-              Discover More
+            <Link to={story.href || "/shop"} className="inline-block mt-10 border border-white px-12 py-4 text-[13px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition">
+              {story.cta}
             </Link>
           </div>
         </div>

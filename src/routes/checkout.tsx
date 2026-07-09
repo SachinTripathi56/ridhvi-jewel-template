@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useCart } from "@/lib/cart";
+import { price } from "@/lib/format";
 import { useState } from "react";
 
 export const Route = createFileRoute("/checkout")({
@@ -13,7 +14,7 @@ function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
   const [shipping, setShipping] = useState<"flat" | "free">("flat");
   const [pay, setPay] = useState<"bank" | "cod">("bank");
-  const ship = shipping === "flat" ? 30 : 0;
+  const ship = shipping === "flat" ? 250 : 0;
   const total = subtotal + ship;
 
   const onPlace = (e: React.FormEvent) => {
@@ -60,17 +61,17 @@ function CheckoutPage() {
           <h3 className="text-xl mb-5">Your Order</h3>
           {items.map((it) => (
             <div key={it.product.slug} className="flex justify-between py-2 text-sm">
-              <span>{it.product.name} × {it.qty}</span><span>${it.product.price * it.qty}</span>
+              <span>{it.product.name} × {it.qty}</span><span>{price(it.product.price * it.qty)}</span>
             </div>
           ))}
-          <div className="flex justify-between py-3 border-t border-border mt-3 text-sm"><span>Subtotal</span><span>${subtotal}</span></div>
+          <div className="flex justify-between py-3 border-t border-border mt-3 text-sm"><span>Subtotal</span><span>{price(subtotal)}</span></div>
 
           <div className="py-3 border-t border-border">
             <p className="text-xs tracking-widest uppercase mb-3">Shipment</p>
-            <label className="flex items-center justify-between text-sm py-1.5"><span className="flex items-center gap-2"><input type="radio" checked={shipping === "flat"} onChange={() => setShipping("flat")} />Flat rate</span><span>$30</span></label>
-            <label className="flex items-center justify-between text-sm py-1.5"><span className="flex items-center gap-2"><input type="radio" checked={shipping === "free"} onChange={() => setShipping("free")} />Free shipping</span><span>$0</span></label>
+            <label className="flex items-center justify-between text-sm py-1.5"><span className="flex items-center gap-2"><input type="radio" checked={shipping === "flat"} onChange={() => setShipping("flat")} />Flat rate</span><span>{price(250)}</span></label>
+            <label className="flex items-center justify-between text-sm py-1.5"><span className="flex items-center gap-2"><input type="radio" checked={shipping === "free"} onChange={() => setShipping("free")} />Free shipping</span><span>{price(0)}</span></label>
           </div>
-          <div className="flex justify-between py-4 text-lg border-t border-border"><span>Total</span><span>${total}</span></div>
+          <div className="flex justify-between py-4 text-lg border-t border-border"><span>Total</span><span>{price(total)}</span></div>
 
           <p className="text-xs tracking-widest uppercase mt-4 mb-3">Payment Method</p>
           <label className="block text-sm py-2"><input type="radio" checked={pay === "bank"} onChange={() => setPay("bank")} className="mr-2" />Direct bank transfer</label>

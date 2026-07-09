@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionTitle } from "@/components/SectionTitle";
 import { getProduct, PRODUCTS } from "@/lib/products";
 import { useCart } from "@/lib/cart";
+import { price } from "@/lib/format";
 import { useState } from "react";
 import { Heart, Share2, Minus, Plus, ChevronRight, X } from "lucide-react";
 
@@ -72,8 +73,8 @@ function ProductPage() {
 
           <h1 className="mt-6 text-4xl md:text-5xl">{product.name}</h1>
           <p className="mt-4 text-2xl">
-            {product.oldPrice && <span className="text-muted-foreground line-through mr-3 text-lg">${product.oldPrice}</span>}
-            ${product.price}
+            {product.oldPrice && <span className="text-muted-foreground line-through mr-3 text-lg">{price(product.oldPrice)}</span>}
+            {price(product.price)}
           </p>
           <p className="mt-6 text-muted-foreground leading-relaxed">{product.description}</p>
 

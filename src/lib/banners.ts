@@ -8,6 +8,7 @@ export type Banner = {
   subtitle?: string;
   cta?: string;
   href?: string;
+  showText?: boolean;
 };
 
 const KEY = "ridhvi.banners";
@@ -23,6 +24,7 @@ export const defaultBanners: Banner[] = [
     subtitle: "NEW IN OUR SHOP",
     cta: "Shop Now",
     href: "/shop",
+    showText: true,
   },
   {
     id: "b2",
@@ -33,6 +35,7 @@ export const defaultBanners: Banner[] = [
     subtitle: "HAND-FINISHED IN OUR ATELIER",
     cta: "Explore",
     href: "/shop",
+    showText: true,
   },
 ];
 
