@@ -39,8 +39,8 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-[10px] tracking-[0.2em] uppercase text-accent">{product.category}</p>
         <Link to="/product/$slug" params={{ slug: product.slug }} className="block mt-1.5 text-base">{product.name}</Link>
         <div className="mt-2 text-sm flex items-center justify-center gap-2">
-          {product.oldPrice && <span className="text-muted-foreground line-through">${product.oldPrice}</span>}
-          <span>${product.price}</span>
+          {product.oldPrice && <span className="text-muted-foreground line-through">{price(product.oldPrice)}</span>}
+          <span>{price(product.price)}</span>
         </div>
       </div>
     </div>
