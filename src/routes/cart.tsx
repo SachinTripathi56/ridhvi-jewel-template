@@ -42,7 +42,7 @@ function CartPage() {
                           <Link to="/product/$slug" params={{ slug: it.product.slug }}>{it.product.name}</Link>
                         </div>
                       </td>
-                      <td className="text-center">${it.product.price}</td>
+                      <td className="text-center">{price(it.product.price)}</td>
                       <td>
                         <div className="flex items-center justify-center border border-border w-fit mx-auto">
                           <button onClick={() => setQty(it.product.slug, it.qty - 1)} className="w-8 h-8 flex items-center justify-center"><Minus className="w-3 h-3" /></button>
@@ -50,7 +50,7 @@ function CartPage() {
                           <button onClick={() => setQty(it.product.slug, it.qty + 1)} className="w-8 h-8 flex items-center justify-center"><Plus className="w-3 h-3" /></button>
                         </div>
                       </td>
-                      <td className="text-center">${it.product.price * it.qty}</td>
+                      <td className="text-center">{price(it.product.price * it.qty)}</td>
                       <td className="text-right"><button onClick={() => remove(it.product.slug)} aria-label="Remove"><X className="w-4 h-4 text-muted-foreground hover:text-accent" /></button></td>
                     </tr>
                   ))}
@@ -60,9 +60,9 @@ function CartPage() {
 
             <aside className="bg-secondary p-8 h-fit">
               <h3 className="text-xl mb-6">Cart Totals</h3>
-              <div className="flex justify-between py-3 border-b border-border text-sm"><span>Subtotal</span><span>${subtotal}</span></div>
-              <div className="flex justify-between py-3 border-b border-border text-sm"><span>Shipping</span><span>$30</span></div>
-              <div className="flex justify-between py-4 text-lg"><span>Total</span><span>${subtotal + 30}</span></div>
+              <div className="flex justify-between py-3 border-b border-border text-sm"><span>Subtotal</span><span>{price(subtotal)}</span></div>
+              <div className="flex justify-between py-3 border-b border-border text-sm"><span>Shipping</span><span>{price(250)}</span></div>
+              <div className="flex justify-between py-4 text-lg"><span>Total</span><span>{price(subtotal + 250)}</span></div>
               <Link to="/checkout" className="block text-center mt-4 bg-primary text-primary-foreground py-3.5 text-[11px] tracking-[0.3em] uppercase">Checkout</Link>
             </aside>
           </div>
