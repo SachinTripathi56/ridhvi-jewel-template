@@ -135,22 +135,22 @@ function Home() {
       {/* About brand — image banner (3/4 screen) with fused text */}
       <section className="relative w-full mt-24" style={{ height: "75vh" }}>
         <img
-          src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1800&q=80"
+          src={story.image}
           alt="Ridhvi atelier"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-[1400px] mx-auto w-full px-10 md:px-16 text-white">
-            <p className="text-[11px] tracking-[0.35em] uppercase text-white/80">About Ridhvi</p>
-            <h2 className="mt-4 font-display text-5xl md:text-7xl leading-[1.05] max-w-2xl">
-              Made by hand,<br />meant to last.
+            <p className="text-[13px] tracking-[0.35em] uppercase text-white/85">{story.eyebrow}</p>
+            <h2 className="mt-4 font-display text-6xl md:text-8xl leading-[1.02] max-w-3xl whitespace-pre-line">
+              {story.title}
             </h2>
-            <p className="mt-6 max-w-lg text-white/85 leading-relaxed">
-              Every piece is cast, finished and polished by our small team. Solid sterling silver, ethically-sourced stones — worn and re-worn for a lifetime.
+            <p className="mt-8 max-w-xl text-lg text-white/90 leading-relaxed">
+              {story.body}
             </p>
-            <Link to="/shop" className="inline-block mt-8 border border-white px-10 py-3.5 text-[11px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition">
-              Discover More
+            <Link to={story.href || "/shop"} className="inline-block mt-10 border border-white px-12 py-4 text-[13px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition">
+              {story.cta}
             </Link>
           </div>
         </div>
