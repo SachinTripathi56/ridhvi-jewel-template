@@ -24,6 +24,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const [tab, setTab] = useState<"new" | "featured" | "sale">("new");
+  const { story } = useStory();
   const tabbed = PRODUCTS.filter((p) =>
     tab === "new" ? p.badge === "NEW" : tab === "featured" ? p.badge === "FEATURED" : !!p.oldPrice
   ).slice(0, 4);
