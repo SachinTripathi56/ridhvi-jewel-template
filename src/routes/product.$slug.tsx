@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionTitle } from "@/components/SectionTitle";
 import { getProduct, PRODUCTS } from "@/lib/products";
 import { useCart } from "@/lib/cart";
+import { price } from "@/lib/format";
 import { useState } from "react";
 import { Heart, Share2, Minus, Plus, ChevronRight, X } from "lucide-react";
 
