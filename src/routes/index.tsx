@@ -59,16 +59,16 @@ function Home() {
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-[1600px] w-full mx-auto px-10 grid md:grid-cols-2 gap-10 items-center">
             <div />
-            {active && (
+            {active && (active.showText ?? true) && (
               <div className="bg-[#c9a48a]/90 backdrop-blur-sm text-white px-12 py-16 max-w-xl ml-auto">
-                <h1 className="font-display text-5xl md:text-6xl leading-[1.05] whitespace-pre-line">
+                <h1 className="font-display text-6xl md:text-7xl leading-[1.05] whitespace-pre-line">
                   {active.title}
                 </h1>
                 {active.subtitle && (
-                  <p className="mt-6 text-[11px] tracking-[0.32em]">{active.subtitle}</p>
+                  <p className="mt-6 text-[13px] tracking-[0.32em]">{active.subtitle}</p>
                 )}
                 {active.cta && (
-                  <Link to={active.href ?? "/shop"} className="mt-8 inline-block bg-black text-white px-10 py-4 text-[11px] tracking-[0.3em] uppercase hover:opacity-90">
+                  <Link to={active.href ?? "/shop"} className="mt-8 inline-block bg-black text-white px-10 py-4 text-[12px] tracking-[0.3em] uppercase hover:opacity-90">
                     {active.cta}
                   </Link>
                 )}
