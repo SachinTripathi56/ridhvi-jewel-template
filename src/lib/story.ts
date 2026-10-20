@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 
 export type Story = {
   eyebrow: string;
@@ -9,10 +9,10 @@ export type Story = {
   image: string;
 };
 
-const KEY = "ridhvi.story";
+const KEY = "parvior.story";
 
 export const defaultStory: Story = {
-  eyebrow: "About Ridhvi",
+  eyebrow: "About Parvior",
   title: "Made by hand,\nmeant to last.",
   body: "Every piece is cast, finished and polished by our small team. Solid sterling silver, ethically-sourced stones — worn and re-worn for a lifetime.",
   cta: "Discover More",

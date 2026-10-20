@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 
 export type Banner = {
   id: string;
@@ -11,8 +11,8 @@ export type Banner = {
   showText?: boolean;
 };
 
-const KEY = "ridhvi.banners";
-const INTERVAL_KEY = "ridhvi.banners.interval";
+const KEY = "parvior.banners";
+const INTERVAL_KEY = "parvior.banners.interval";
 
 export const defaultBanners: Banner[] = [
   {

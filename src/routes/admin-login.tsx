@@ -1,11 +1,11 @@
-import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { signIn, useAdminAuth } from "@/lib/admin-auth";
 import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/admin-login")({
-  head: () => ({ meta: [{ title: "Admin Sign In — Ridhvi" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Admin Sign In — Parvior" }, { name: "robots", content: "noindex" }] }),
   component: AdminLogin,
 });
 
@@ -45,9 +45,9 @@ function AdminLogin() {
             <label className="text-xs tracking-widest uppercase">Password</label>
             <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="mt-2 w-full bg-background border border-border px-4 py-3 text-sm" />
           </div>
-          {error && <p className="text-sm text-[#8B1F2B]">{error}</p>}
+          {error && <p className="text-sm text-foreground">{error}</p>}
           <button type="submit" className="w-full bg-primary text-primary-foreground py-3.5 text-[11px] tracking-[0.3em] uppercase">Sign In</button>
-          <p className="text-[11px] text-muted-foreground text-center">Default: admin@ridhvi.com / ridhvi123 — change from Admin → Settings.</p>
+          <p className="text-[11px] text-muted-foreground text-center">Default: admin@parvior.com / PARVIOR123 — change from Admin → Settings.</p>
           <Link to="/" className="block text-center text-xs text-accent">← Back to store</Link>
         </form>
       </section>

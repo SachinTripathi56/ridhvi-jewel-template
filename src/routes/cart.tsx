@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useCart } from "@/lib/cart";
@@ -6,7 +6,7 @@ import { price } from "@/lib/format";
 import { Minus, Plus, X } from "lucide-react";
 
 export const Route = createFileRoute("/cart")({
-  head: () => ({ meta: [{ title: "Cart — Ridhvi" }, { name: "description", content: "Your cart." }] }),
+  head: () => ({ meta: [{ title: "Cart — Parvior" }, { name: "description", content: "Your cart." }] }),
   component: CartPage,
 });
 

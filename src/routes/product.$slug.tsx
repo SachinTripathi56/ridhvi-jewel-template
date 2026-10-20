@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+﻿import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/product/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: loaderData ? `${loaderData.name} — Ridhvi` : "Product — Ridhvi" },
+      { title: loaderData ? `${loaderData.name} — Parvior` : "Product — Parvior" },
       { name: "description", content: loaderData?.description ?? "" },
       { property: "og:title", content: loaderData?.name ?? "Product" },
       { property: "og:type", content: "product" },
@@ -100,8 +100,8 @@ function ProductPage() {
 
           <div className="mt-8 border-t border-border">
             {([
-              ["desc", "Description", product.description + " Each piece comes in a Ridhvi gift box with a certificate of authenticity."],
-              ["info", "Additional Information", `Brand: ${product.brand ?? "Ridhvi Atelier"}\nMaterial: Sterling Silver 925\nFinish: Hand-polished`],
+              ["desc", "Description", product.description + " Each piece comes in a PARVIOR gift box with a certificate of authenticity."],
+              ["info", "Additional Information", `Brand: ${product.brand ?? "Parvior Atelier"}\nMaterial: Sterling Silver 925\nFinish: Hand-polished`],
               ["rev", "Reviews (0)", "Be the first to review this piece."],
             ] as const).map(([k, title, body]) => (
               <div key={k} className="border-b border-border">

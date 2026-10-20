@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Logo } from "@/components/Logo";
 import { PRODUCTS } from "@/lib/products";
 import { useBanners, type Banner } from "@/lib/banners";
@@ -9,7 +9,7 @@ import { LayoutDashboard, Package, ShoppingBag, Users, Settings, LogOut, Trendin
 import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin — Ridhvi" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Admin — Parvior" }, { name: "robots", content: "noindex" }] }),
   component: AdminPage,
 });
 
@@ -77,7 +77,7 @@ function Dashboard() {
   return (
     <div>
       <h1 className="text-3xl">Dashboard</h1>
-      <p className="text-sm text-muted-foreground mt-1">Welcome back to Ridhvi Admin.</p>
+      <p className="text-sm text-muted-foreground mt-1">Welcome back to Parvior Admin.</p>
       <div className="grid md:grid-cols-4 gap-5 mt-8">
         <Stat icon={IndianRupee} label="Revenue" value="₹9,86,000" hint="+12% this month" />
         <Stat icon={ShoppingBag} label="Orders" value="184" hint="+8 today" />
@@ -229,8 +229,8 @@ function SettingsPanel() {
       </div>
       <div className="mt-8 max-w-xl space-y-5 bg-card border border-border p-8">
         <h2 className="text-lg">Store</h2>
-        <div><label className="text-xs tracking-widest uppercase">Store name</label><input defaultValue="Ridhvi Atelier" className="mt-2 w-full bg-background border border-border px-4 py-2.5 text-sm" /></div>
-        <div><label className="text-xs tracking-widest uppercase">Contact email</label><input defaultValue="hello@ridhvi.com" className="mt-2 w-full bg-background border border-border px-4 py-2.5 text-sm" /></div>
+        <div><label className="text-xs tracking-widest uppercase">Store name</label><input defaultValue="Parvior Atelier" className="mt-2 w-full bg-background border border-border px-4 py-2.5 text-sm" /></div>
+        <div><label className="text-xs tracking-widest uppercase">Contact email</label><input defaultValue="hello@parvior.com" className="mt-2 w-full bg-background border border-border px-4 py-2.5 text-sm" /></div>
         <div><label className="text-xs tracking-widest uppercase">Currency</label><select className="mt-2 w-full bg-background border border-border px-4 py-2.5 text-sm"><option>INR (₹)</option><option>USD ($)</option><option>EUR (€)</option></select></div>
       </div>
     </div>
@@ -326,7 +326,7 @@ function StoryEditor() {
   return (
     <div>
       <h1 className="text-3xl">Story Section</h1>
-      <p className="text-sm text-muted-foreground mt-1">Edit the "About Ridhvi" banner shown on the home page.</p>
+      <p className="text-sm text-muted-foreground mt-1">Edit the "About Parvior" banner shown on the home page.</p>
 
       <div className="mt-8 grid md:grid-cols-2 gap-8">
         <div className="bg-card border border-border p-6 space-y-4">

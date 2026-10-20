@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
@@ -8,7 +8,7 @@ import { useState } from "react";
 export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
-      { title: "Shop — Ridhvi Silver Jewellery" },
+      { title: "Shop — Parvior Silver Jewellery" },
       { name: "description", content: "Browse our full collection of sterling silver rings, earrings, necklaces and bracelets." },
       { property: "og:url", content: "/shop" },
     ],
@@ -46,7 +46,7 @@ function Shop() {
           </ul>
           <h3 className="text-xs tracking-[0.3em] uppercase text-accent mt-10 mb-4">Brands</h3>
           <ul className="space-y-2.5 text-sm text-muted-foreground">
-            <li>Ridhvi Atelier</li><li>Aurate</li><li>Elsa Peretti</li><li>Tiffany</li>
+            <li>Parvior Atelier</li><li>Aurate</li><li>Elsa Peretti</li><li>Tiffany</li>
           </ul>
         </aside>
 

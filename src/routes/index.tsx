@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
@@ -12,9 +12,9 @@ import { Truck, ShieldCheck, MessageCircle, Award, ChevronLeft, ChevronRight } f
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ridhvi — Hand-finished silver jewellery" },
+      { title: "PARVIOR — Hand-finished silver jewellery" },
       { name: "description", content: "Modern heirloom silver jewellery, hand-finished in our atelier." },
-      { property: "og:title", content: "Ridhvi" },
+      { property: "og:title", content: "Parvior" },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -51,7 +51,7 @@ function Home() {
             key={b.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
           >
-            <img src={b.image} alt={b.title ?? "Ridhvi banner"} className="w-full h-full object-cover" />
+            <img src={b.image} alt={b.title ?? "Parvior banner"} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/25" />
           </div>
         ))}
@@ -136,7 +136,7 @@ function Home() {
       <section className="relative w-full mt-24" style={{ height: "75vh" }}>
         <img
           src={story.image}
-          alt="Ridhvi atelier"
+          alt="Parvior Atelier"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
@@ -171,7 +171,7 @@ function Home() {
 
       {/* Bestsellers */}
       <section className="max-w-[1400px] mx-auto px-6 mt-24">
-        <SectionTitle subtitle="Loved by the Ridhvi community.">Bestsellers</SectionTitle>
+        <SectionTitle subtitle="Loved by the Parvior community.">Bestsellers</SectionTitle>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {PRODUCTS.slice(0, 4).map((p) => <ProductCard key={p.slug} product={p} />)}
         </div>

@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
-const KEY = "ridhvi.admin.session";
-const CREDS_KEY = "ridhvi.admin.creds";
+const KEY = "parvior.admin.session";
+const CREDS_KEY = "parvior.admin.creds";
 
 export type AdminCreds = { email: string; password: string };
 
 // Seed default admin (change from Admin → Settings)
 export function getCreds(): AdminCreds {
-  if (typeof window === "undefined") return { email: "admin@ridhvi.com", password: "ridhvi123" };
+  if (typeof window === "undefined") return { email: "admin@parvior.com", password: "parvior123" };
   try {
     const raw = localStorage.getItem(CREDS_KEY);
     if (raw) return JSON.parse(raw);
   } catch {}
-  const seed = { email: "admin@ridhvi.com", password: "ridhvi123" };
+  const seed = { email: "admin@parvior.com", password: "parvior123" };
   localStorage.setItem(CREDS_KEY, JSON.stringify(seed));
   return seed;
 }

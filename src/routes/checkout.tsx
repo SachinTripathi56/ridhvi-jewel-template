@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useCart } from "@/lib/cart";
@@ -6,7 +6,7 @@ import { price } from "@/lib/format";
 import { useState } from "react";
 
 export const Route = createFileRoute("/checkout")({
-  head: () => ({ meta: [{ title: "Checkout — Ridhvi" }] }),
+  head: () => ({ meta: [{ title: "Checkout — Parvior" }] }),
   component: CheckoutPage,
 });
 
